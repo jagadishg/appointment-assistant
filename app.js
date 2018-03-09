@@ -17,6 +17,9 @@ var bot = new builder.UniversalBot(connector, function(session) {
     session.beginDialog('setAppointment');
 });
 
+var inMemoryStorage = new builder.MemoryBotStorage();
+bot.set('storage', inMemoryStorage);
+
 bot.dialog('setAppointment', [(session, args, next) => {
     builder.Prompts.text(session, "Whats your name?");
 }, (session, results) => {
